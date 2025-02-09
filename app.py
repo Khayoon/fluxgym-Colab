@@ -18,7 +18,7 @@ from transformers import AutoProcessor, AutoModelForCausalLM
 from gradio_logsview import LogsView, LogsViewRunner
 from huggingface_hub import hf_hub_download
 
-MAX_IMAGES = 150
+MAX_IMAGES = 600
 
 def load_captioning(uploaded_files, concept_sentence):
     uploaded_images = [file for file in uploaded_files if not file.endswith('.txt')]
