@@ -44,9 +44,9 @@ module.exports = {
       method: "fs.link",
       params: {
         drive: {
-          vae: "/content/gdrive/MyDrive/ComfyUI/models/vae",
-          clip: "/content/gdrive/MyDrive/ComfyUI/models/clip",
-          unet: "/content/gdrive/MyDrive/ComfyUI/models/diffusion_models",
+          vae: "models/vae",
+          clip: "models/clip",
+          unet: "models/unet",
           loras: "outputs",
         },
         peers: [
@@ -59,14 +59,31 @@ module.exports = {
       }
     },
     {
-      method: "fs.link",
+      method: "fs.download",
       params: {
-        drive: {
-          "models/clip/clip_l.safetensors": "/content/gdrive/MyDrive/ComfyUI/models/clip/clip_l.safetensors",
-          "models/clip/t5xxl_fp16.safetensors": "/content/gdrive/MyDrive/ComfyUI/models/clip/t5xxl_fp16.safetensors",
-          "models/vae/ae.sft": "/content/gdrive/MyDrive/ComfyUI/models/vae/ae.safetensors",
-          "models/unet/flux1-dev.safetensors": "/content/gdrive/MyDrive/ComfyUI/models/diffusion_models/flux_dev.safetensors"
-        }
+        uri: [
+          "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true",
+          "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors?download=true",
+        ],
+        dir: "models/clip"
+      }
+    },
+    {
+      method: "fs.download",
+      params: {
+        uri: [
+          "https://huggingface.co/cocktailpeanut/xulf-dev/resolve/main/ae.sft?download=true",
+        ],
+        dir: "models/vae"
+      }
+    },
+    {
+      method: "fs.download",
+      params: {
+        uri: [
+          "https://huggingface.co/cocktailpeanut/xulf-dev/resolve/main/flux1-dev.sft?download=true",
+        ],
+        dir: "models/unet"
       }
     },
     {
